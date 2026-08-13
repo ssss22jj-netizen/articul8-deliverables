@@ -246,6 +246,10 @@ h1 em{font-style:normal;color:var(--navy);}
   body{background:#fff !important;padding:0 !important;}
   .s{margin:0 !important;border:none !important;box-shadow:none !important;}
 }
+
+/* 한국어 줄바꿈 — 어절 중간에서 끊기지 않게, 마지막 줄 고아 단어 방지 */
+body{word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty;}
+h1,h2,h3,.close,.foot,.ttl,.hd h1{text-wrap:balance;}
 </style></head><body>
 
 <!-- 01 -->

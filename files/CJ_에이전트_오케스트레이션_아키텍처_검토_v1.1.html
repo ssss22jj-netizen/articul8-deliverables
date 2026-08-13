@@ -225,6 +225,12 @@ h1 em{font-style:normal;color:var(--navy);}
 .agree{border:1px solid var(--line);background:#fbfcfd;padding:15px 20px;font-size:15px;
   color:#5d6873;line-height:1.6;margin-bottom:11px;border-radius:3px;}
 .agree b{color:var(--ink);}
+
+@media print{
+  *,*::before,*::after{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  body{background:#fff !important;padding:0 !important;}
+  .s{margin:0 !important;border:none !important;box-shadow:none !important;}
+}
 </style></head><body>
 
 <!-- 01 -->
@@ -509,7 +515,7 @@ h1 em{font-style:normal;color:var(--navy);}
  font-family:'Apple SD Gothic Neo',sans-serif;display:none}
 @media print{#pdfbtn,#pdfhint{display:none!important}}
 </style>
-<div id="pdfhint">인쇄 창에서 <b>대상 → PDF로 저장</b><br>여백 <b>없음</b> · 배경 그래픽 <b>체크</b></div>
+<div id="pdfhint">인쇄 창에서 <b>대상 → PDF로 저장</b><br>여백은 <b>없음</b>으로</div>
 <button id="pdfbtn" onclick="window.print()"
  onmouseover="document.getElementById('pdfhint').style.display='block'"
  onmouseout="document.getElementById('pdfhint').style.display='none'">↓ PDF로 저장</button>

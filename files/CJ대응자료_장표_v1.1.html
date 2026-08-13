@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+@page { size: 1280px 720px; margin: 0; }
+:root{
+  --navy:#1a3d6d; --navy2:#2b5c9b; --ink:#16232f; --mute:#6b7683;
+  --line:#dfe4ea; --bg:#f7f8fa; --gold:#b8892b; --soft:#eef3f9;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;}
+.s{width:1280px;height:720px;padding:46px 58px 54px;position:relative;background:#fff;
+   page-break-after:always;display:flex;flex-direction:column;overflow:hidden;}
+.s:last-child{page-break-after:auto;}
+
+/* header */
+.eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.eyebrow .n{width:25px;height:25px;border-radius:50%;background:var(--navy);color:#fff;
+  font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.eyebrow .t{font-size:14px;letter-spacing:1.5px;color:var(--mute);}
+h1{font-size:41px;line-height:1.3;color:var(--ink);font-weight:800;letter-spacing:-.7px;}
+h1 em{font-style:normal;color:var(--navy);}
+.lead{margin-top:15px;font-size:18px;line-height:1.65;color:#54606c;
+  border-left:3px solid var(--navy2);padding-left:13px;}
+.mid{flex:1;display:flex;align-items:center;justify-content:center;margin:14px 0 10px;}
+.close{font-size:18.5px;color:#fff;background:var(--navy);padding:13px 20px;font-weight:700;
+  border-radius:3px;letter-spacing:-.3px;}
+.foot{position:absolute;left:58px;right:58px;bottom:18px;display:flex;
+  justify-content:space-between;font-size:11.5px;color:#c3cad2;letter-spacing:1.2px;}
+
+/* 01 */
+.cover{display:flex;height:100%;}
+.cband{width:262px;background:var(--navy);color:#fff;padding:46px 30px;display:flex;
+  flex-direction:column;justify-content:space-between;}
+.cband .k{font-size:11.5px;letter-spacing:2px;opacity:.62;margin-bottom:6px;}
+.cband .v{font-size:15.5px;line-height:1.6;}
+.cmain{flex:1;padding:46px 58px;display:flex;flex-direction:column;justify-content:center;}
+
+/* 02 */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;width:100%;}
+.tcard{border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:5px;
+  padding:24px 22px;background:#fff;box-shadow:0 1px 4px rgba(20,40,70,.05);
+  display:grid;grid-template-rows:auto auto 1fr;}
+.tcard .bd{width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--navy);
+  font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.tcard b{font-size:21px;color:var(--ink);line-height:1.4;margin-bottom:10px;}
+.tcard span{font-size:16px;color:#5d6873;line-height:1.6;}
+.orgmini{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:16px;}
+.orgband{width:560px;background:var(--soft);border:1px solid #cfdcec;border-radius:3px;
+  padding:9px;text-align:center;font-size:14px;color:var(--navy);font-weight:700;}
+.orgar{display:flex;width:560px;justify-content:space-around;color:var(--navy);font-size:11px;line-height:1;padding:3px 0;}
+.orgrow{display:flex;width:560px;justify-content:space-between;}
+.orgrow div{width:174px;border:1px solid var(--line);border-radius:3px;padding:9px 0;
+  text-align:center;font-size:14px;color:#5d6873;background:#fcfdfe;}
+
+/* 03 */
+.stack{width:100%;}
+.ly{display:flex;align-items:stretch;gap:15px;}
+.lybox{flex:1;border:1px solid var(--line);background:#fcfdfe;border-radius:4px;
+  padding:10px 18px;display:flex;align-items:center;gap:13px;}
+.lybox.on{background:var(--navy);border-color:var(--navy);}
+.lybox.hi{background:#fff;border:2.5px solid var(--navy);}
+.lybox.hi .lyno{background:var(--navy);color:#fff;}
+.lybox.hi .lyname{color:var(--navy);}
+.lybox.hi .lyitem b{color:var(--navy);}
+.lyno{width:26px;height:26px;border-radius:50%;background:var(--soft);color:var(--navy);
+  font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;}
+.lybox.on .lyno{background:rgba(255,255,255,.2);color:#fff;}
+.lyname{font-size:19px;font-weight:800;color:var(--ink);width:158px;flex:none;}
+.lybox.on .lyname{color:#fff;}
+.lyitem{font-size:15.5px;color:#5d6873;}
+.lybox.on .lyitem{color:#c9dcf2;}
+.lybox.on .lyitem b{color:#fff;}
+.lydesc{width:246px;flex:none;display:flex;align-items:center;font-size:14px;
+  color:#8a939d;line-height:1.45;}
+.up{color:var(--navy2);font-size:11px;line-height:1;text-align:center;
+  padding:2.5px 0;margin-right:261px;}
+
+/* 04 */
+.frame{width:100%;border:1.5px solid var(--navy);border-radius:5px;background:#fcfdfe;}
+.ftab{background:var(--navy);color:#fff;font-size:16px;font-weight:800;padding:6px 16px;
+  border-radius:3.5px 3.5px 0 0;display:flex;align-items:baseline;gap:9px;}
+.ftab i{font-style:normal;font-weight:400;font-size:13px;opacity:.72;}
+.fbody{display:flex;gap:15px;padding:13px;align-items:stretch;}
+.cl{width:238px;display:flex;flex-direction:column;gap:5px;}
+.tag{font-size:12px;letter-spacing:1.4px;color:#9aa3ac;margin-bottom:3px;}
+.src{border:1px solid var(--line);background:#fff;padding:7px 12px;font-size:13.5px;
+  color:#5d6873;border-radius:3px;}
+.bignum{font-size:25px;font-weight:800;color:var(--navy);margin-top:8px;line-height:1.1;}
+.subnote{font-size:13px;color:#8a939d;line-height:1.45;margin-top:2px;}
+.arw{display:flex;align-items:center;color:var(--navy2);font-size:19px;flex:none;}
+.cm{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.lvl{border:1px solid #b9cde5;background:#fff;border-radius:4px;padding:10px 18px;}
+.lvl b{font-size:18px;color:var(--navy);}
+.lvl b em{font-style:normal;font-size:13.5px;font-weight:500;color:#8ba3c0;margin-left:7px;}
+.lvl span{display:block;font-size:14px;color:#5d6873;margin-top:2px;line-height:1.45;}
+.bi{text-align:center;color:var(--navy2);font-size:11px;line-height:1;padding:3px 0;}
+.dpack{border:1px dashed #c3cad3;background:#f8fafc;padding:7px;font-size:13px;
+  color:#7d868f;text-align:center;border-radius:3px;margin-top:8px;}
+.cr{width:192px;display:flex;flex-direction:column;gap:9px;justify-content:center;}
+.out{border:1px solid var(--line);background:#fff;padding:14px 8px;font-size:15.5px;
+  color:var(--ink);text-align:center;border-radius:3px;font-weight:600;}
+.thumb{position:absolute;right:58px;top:46px;width:170px;border:1px solid var(--line);
+  background:#fbfcfd;padding:8px;border-radius:4px;}
+.thumb i{display:block;height:9px;background:#e3e8ee;margin-bottom:3.5px;border-radius:1px;}
+.thumb i.on{background:var(--navy);}
+.thumb p{font-size:11px;color:#8a939d;margin-top:6px;text-align:center;line-height:1.4;}
+.thumb p b{color:var(--navy);font-size:12.5px;}
+
+/* 05 */
+.dpband{width:680px;margin:0 auto;background:var(--navy);border-radius:4px;padding:18px;
+  text-align:center;color:#fff;}
+.dpband b{font-size:22px;letter-spacing:-.2px;}
+.dpband span{display:block;font-size:14px;color:#b9cfe9;margin-top:2px;}
+.pipes{display:flex;justify-content:center;gap:120px;margin:6px 0;}
+.pipe{text-align:center;font-size:14px;color:#5d6873;line-height:1.4;}
+.pipe u{display:block;text-decoration:none;color:var(--navy2);font-size:19px;line-height:1;}
+.legacy{display:flex;gap:14px;justify-content:center;}
+.leg{width:160px;border:1px solid var(--line);border-bottom:5px solid #98a3ae;
+  background:#fcfdfe;border-radius:4px 4px 2px 2px;padding:19px 0;text-align:center;}
+.leg b{font-size:22px;color:var(--ink);display:block;}
+.leg span{font-size:13px;color:#8a939d;}
+.bul{display:flex;gap:36px;justify-content:center;margin-top:26px;font-size:15.5px;color:#5d6873;}
+.bul span::before{content:"—  ";color:var(--navy2);}
+
+/* 06 */
+.notice{border-left:5px solid var(--gold);background:#fdf7ea;padding:15px 20px;
+  font-size:17px;color:#6f5a20;line-height:1.5;margin-top:15px;border-radius:0 4px 4px 0;}
+.notice b{color:#8a6a12;}
+.gband{background:var(--navy);border-radius:4px;padding:15px;text-align:center;color:#fff;
+  font-size:18px;font-weight:700;}
+.gar{display:flex;justify-content:space-around;padding:7px 0;color:var(--navy2);font-size:16px;line-height:1;}
+.cos{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.co{border:1px solid var(--line);border-radius:4px;padding:18px 20px;background:#fcfdfe;}
+.co b{font-size:22px;color:var(--ink);display:block;}
+.co i{font-style:normal;font-size:14px;color:var(--navy2);display:block;margin:3px 0 9px;}
+.co span{font-size:15px;color:#5d6873;line-height:1.55;}
+.dpfoot{background:var(--soft);border:1px solid #cfdcec;border-radius:4px;padding:14px;
+  text-align:center;font-size:17px;font-weight:700;color:var(--navy);margin-top:9px;}
+.dpfoot em{font-style:normal;font-weight:400;font-size:13.5px;color:#7d868f;}
+.chips{display:flex;gap:14px;margin-top:13px;}
+.chip{flex:1;border-left:4px solid var(--navy);background:#f8fafc;padding:13px 16px;}
+.chip b{font-size:16px;color:var(--ink);display:block;margin-bottom:2px;}
+.chip span{font-size:14px;color:#5d6873;}
+
+/* appendix */
+.q4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;}
+.qc{border:1px solid var(--line);border-top:5px solid var(--navy);background:#fff;
+  border-radius:5px;padding:21px 18px;display:grid;grid-template-rows:auto auto 1fr auto auto;
+  box-shadow:0 1px 4px rgba(20,40,70,.05);}
+.qc .bd{width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;
+  font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:11px;}
+.qc b{font-size:18px;color:var(--ink);line-height:1.4;}
+.qc .qq{font-size:14.5px;color:#5d6873;line-height:1.55;margin:10px 0;}
+.ab{font-size:14.5px;padding:10px 12px;border-radius:2px;margin-top:5px;}
+.ab.a{background:#f2f4f6;color:#8a939d;}
+.ab.b{background:var(--soft);color:var(--navy);border-left:3px solid var(--navy);font-weight:700;}
+.tl{display:flex;align-items:stretch;gap:14px;width:100%;}
+.tl>div{flex:1;border:1px solid var(--line);background:#fcfdfe;border-radius:5px;padding:22px 20px;}
+.tl .core{border:1.5px solid var(--navy);background:#fff;flex:1.3;
+  box-shadow:0 2px 10px rgba(26,61,109,.09);}
+.tl .k{font-size:12px;letter-spacing:1.4px;color:#9aa3ac;}
+.tl b{font-size:19px;color:var(--ink);display:block;margin:6px 0 9px;}
+.tl .big{font-size:70px;color:var(--navy);font-weight:800;line-height:1;letter-spacing:-2px;}
+.tl .big s{text-decoration:none;font-size:27px;margin-left:3px;}
+.tl span{font-size:15px;color:#5d6873;line-height:1.55;}
+#s04 .agent{padding:15px 18px;}
+#s04 .apart{padding:8px 13px;margin-bottom:6px;}
+#s04 .apart b{font-size:15px;}
+#s04 .apart span{font-size:13px;}
+#s04 .aeq{padding:9px;font-size:15px;margin-top:9px;}
+#s04 .band{padding:9px;font-size:16px;margin:10px 0;}
+#s04 .compo{gap:12px;}
+#s04 .cbox{padding:12px 15px;}
+#s04 .cbox .h{font-size:16px;margin-bottom:6px;}
+#s04 .cbox .chain{padding:6px;font-size:13.5px;margin-bottom:7px;}
+#s04 .cbox p{font-size:13.5px;line-height:1.45;}
+#s04 .lead{margin-top:11px;font-size:16.5px;}
+#s04 .mid{margin:10px 0 8px;}
+#s04 .close{padding:11px 20px;font-size:17px;}
+.band{background:var(--gold);color:#fff;border-radius:4px;padding:11px;text-align:center;
+  font-size:17px;font-weight:800;margin:14px 0;}
+.compo{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.cbox{border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:5px;
+  padding:15px 17px;background:#fff;}
+.cbox .h{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:9px;}
+.cbox .chain{background:var(--soft);border-radius:3px;padding:8px;text-align:center;
+  font-size:14px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+.cbox p{font-size:14px;color:#5d6873;line-height:1.55;}
+.rowtbl{width:100%;border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.rowtbl div{display:flex;border-bottom:1px solid var(--line);}
+.rowtbl div:last-child{border-bottom:none;}
+.rowtbl b{width:132px;flex:none;background:#f5f8fb;padding:9px 13px;font-size:14.5px;color:var(--navy);}
+.rowtbl span{padding:9px 13px;font-size:14.5px;color:#5d6873;}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
+.mbox{border:1px solid #b9cde5;border-radius:4px;padding:13px 15px;background:#fbfdff;}
+.mbox b{display:block;font-size:16.5px;color:var(--navy);margin-bottom:5px;}
+.mbox span{font-size:13.5px;color:#5d6873;line-height:1.5;}
+.tips{width:320px;flex:none;}
+.tip{border-left:3px solid var(--navy2);background:#f8fafc;padding:10px 14px;margin-bottom:9px;}
+.tip b{display:block;font-size:15px;color:var(--ink);}
+.tip span{font-size:13.5px;color:#5d6873;line-height:1.5;}
+.whenu{margin-top:12px;font-size:14px;color:#5d6873;line-height:1.75;}
+.whenu i{font-style:normal;color:var(--navy2);font-weight:800;margin-right:5px;}
+.agent{width:400px;border:1.5px solid var(--navy);border-radius:5px;
+  padding:20px 22px;background:#fbfcfe;flex:none;}
+.apart{border:1px solid var(--line);background:#fff;border-radius:4px;padding:11px 15px;margin-bottom:8px;}
+.apart b{font-size:16px;color:var(--navy);display:block;}
+.apart span{font-size:13.5px;color:#5d6873;}
+.aeq{background:var(--navy);color:#fff;border-radius:4px;padding:11px;text-align:center;
+  font-size:16px;font-weight:800;margin-top:12px;}
+.mode{border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:5px;
+  padding:20px 19px;background:#fff;box-shadow:0 1px 4px rgba(20,40,70,.05);
+  display:grid;grid-template-rows:auto auto 1fr;}
+.mode .k{font-size:12px;letter-spacing:1.4px;color:#9aa3ac;margin-bottom:6px;}
+.mode b{font-size:21px;color:var(--ink);margin-bottom:10px;}
+.mode span{font-size:15.5px;color:#5d6873;line-height:1.6;}
+.gloss{display:flex;gap:26px;background:#f5f8fb;border:1px solid #dbe4ee;border-radius:4px;
+  padding:11px 18px;font-size:13px;color:#63707d;line-height:1.5;margin-bottom:10px;}
+.gloss span{flex:1;}
+.gloss b{color:var(--navy);display:block;font-size:13.5px;margin-bottom:1px;}
+.agree{border:1px solid var(--line);background:#fbfcfd;padding:15px 20px;font-size:15px;
+  color:#5d6873;line-height:1.6;margin-bottom:11px;border-radius:3px;}
+.agree b{color:var(--ink);}
+</style></head><body>
+
+<!-- 01 -->
+<div class="s" style="padding:0;">
+ <div class="cover">
+  <div class="cband">
+   <div><div class="k">CONFIDENTIAL</div><div class="v">2026.08<br>검토 자료</div></div>
+   <div>
+     <div class="k">제안 파트너</div>
+     <div class="v" style="margin-bottom:22px;">Articul8<br>마켓핏랩</div>
+     <div class="k">대상 미팅</div>
+     <div class="v">2026.08.13 (목)</div>
+   </div>
+  </div>
+  <div class="cmain">
+   <div style="font-size:14px;color:var(--navy2);font-weight:700;letter-spacing:.5px;margin-bottom:20px;">CJ 에이전트 오케스트레이션 아키텍처 검토</div>
+   <h1 style="font-size:52px;line-height:1.24;">계열사마다 생길 에이전트들을,<br><em>하나의 운영체계로</em></h1>
+  </div>
+ </div>
+</div>
+
+<!-- 02 -->
+<div class="s">
+ <div class="eyebrow"><span class="n">02</span><span class="t">각자 만든 에이전트</span></div>
+ <h1>계열사가 각자 만든 에이전트를, <em>그룹이 함께 쓸 수 있는가</em></h1>
+ <div class="lead">계열사마다 데이터도 업무도 다릅니다. 에이전트를 각자 만드는 것은 자연스럽고, 현장에 맞는 방식입니다.<br>하나로 통일하면 오히려 각 현장에서의 쓸모가 떨어집니다. 다만 에이전트를 하나하나 직접 개발할 필요는 없습니다. 만드는 일 자체부터 플랫폼이 맡습니다.</div>
+ <div class="mid" style="flex-direction:column;align-items:stretch;">
+  <div style="font-size:13.5px;color:var(--ink);font-weight:700;margin-bottom:13px;">각자 만들되, 서로 이어 붙일 수 있다면</div>
+  <div class="tri">
+   <div class="tcard"><span class="bd">01</span><b>한 번 만들면<br>다시 만들지 않습니다</b><span>한 계열사가 만든 에이전트를 다른 계열사가 그대로 가져다 씁니다</span></div>
+   <div class="tcard"><span class="bd">02</span><b>여러 에이전트가<br>이어서 일합니다</b><span>하나의 업무를 여러 에이전트가 순서대로 넘겨받아 끝냅니다</span></div>
+   <div class="tcard"><span class="bd">03</span><b>그룹이<br>전체를 봅니다</b><span>어느 계열사가 무엇을 얼마나 쓰는지 한 화면에서 확인합니다</span></div>
+  </div>
+  <div class="orgmini">
+   <div class="orgband">그룹 계층</div>
+   <div class="orgar"><span>▲</span><span>▲</span><span>▲</span></div>
+   <div class="orgrow"><div>계열사 A</div><div>계열사 B</div><div>계열사 C</div></div>
+  </div>
+ </div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>02 / 08</span></div>
+</div>
+
+<!-- 03 -->
+<div class="s">
+ <div class="eyebrow"><span class="n">03</span><span class="t">작동 구조</span></div>
+ <h1>오케스트레이션은 <em>이렇게 작동합니다</em></h1>
+ <div class="lead">에이전트가 일을 하려면 데이터를 읽고, 업종을 알고, 도구를 부르고, 어딘가에서 돌아가야 합니다. 아래 여섯 층이 그 일을 나눠 맡습니다.</div>
+ <div class="mid">
+  <div class="stack">
+   <div class="ly"><div class="lybox"><span class="lyno">6</span><span class="lyname">애플리케이션</span><span class="lyitem">Articul8 앱 · 고객 앱 · 기간계 시스템(ERP·MES·PLM)</span></div><div class="lydesc">사람이 쓰거나, 다른 시스템이 불러다 씁니다</div></div>
+   <div class="up">▲</div>
+   <div class="ly"><div class="lybox hi"><span class="lyno">5</span><span class="lyname">전문 솔루션</span><span class="lyitem"><b>Data Perception</b> · SimGraph · PLI · APM</span></div><div class="lydesc">업무 목적별로 준비된 기능입니다</div></div>
+   <div class="up">▲</div>
+   <div class="ly"><div class="lybox"><span class="lyno">4</span><span class="lyname">도메인 팩</span><span class="lyitem">금융 · 에너지 · 건설 · 자동차 · 제조 · 통신 …</span></div><div class="lydesc">업종별 용어와 규칙이 미리 들어 있습니다</div></div>
+   <div class="up">▲</div>
+   <div class="ly"><div class="lybox"><span class="lyno">3</span><span class="lyname">인텔리전스</span><span class="lyitem">L1 Structural(구조) · L2 Semantic(의미) · L3 Activity(운영)</span></div><div class="lydesc">데이터를 세 가지 방식으로 읽습니다</div></div>
+   <div class="up">▲</div>
+   <div class="ly"><div class="lybox on"><span class="lyno">2</span><span class="lyname">AgentMesh</span><span class="lyitem">에이전트 · 팀 · 업무 흐름 관리</span></div><div class="lydesc" style="color:var(--navy);font-weight:600;">에이전트를 만들고 굴리는 부분입니다</div></div>
+   <div class="up">▲</div>
+   <div class="ly"><div class="lybox"><span class="lyno">1</span><span class="lyname">클라우드 인프라</span><span class="lyitem">쿠버네티스 · 저장소 · GPU · 네트워크 · 보안</span></div><div class="lydesc">어디에 설치할지 고르는 층입니다</div></div>
+  </div>
+ </div>
+  <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>03 / 08</span></div>
+</div>
+
+
+<!-- 04 AgentMesh ① -->
+<div class="s" id="s04">
+ <div class="eyebrow"><span class="n">04</span><span class="t">AgentMesh ①</span></div>
+ <h1>오케스트레이션을 실현시키는 <em>AgentMesh</em></h1>
+ <div class="lead">모델과 지시문과 도구를 묶어 실제로 일을 하는 에이전트로 만듭니다.</div>
+ <div class="mid" style="flex-direction:column;align-items:stretch;">
+  <div style="display:flex;gap:24px;align-items:stretch;">
+   <div class="agent" style="width:410px;">
+    <div class="tag">에이전트 하나 만들기</div>
+    <div class="apart"><b>모델</b><span>판단을 담당합니다</span></div>
+    <div class="apart"><b>지시문</b><span>무슨 역할인지, 무엇을 하면 안 되는지 정합니다</span></div>
+    <div class="apart" style="margin-bottom:0;"><b>도구</b><span>검색 · 계산 · 시스템 조회처럼 실제로 하는 일</span></div>
+    <div class="aeq">= 스스로 일을 하는 에이전트</div>
+   </div>
+   <div style="flex:1;border:1px solid #bde3d4;background:#f4fbf8;border-radius:5px;padding:16px 19px;">
+    <div style="font-size:17px;font-weight:800;color:#1a6b52;margin-bottom:9px;">낱개가 아니라 조립 단위로 봅니다</div>
+    <div style="font-size:14.5px;color:#4a5560;line-height:1.7;">
+      에이전트 하나는 집중된 업무, 빠른 처리, 시제품 제작에 유용합니다.<br>
+      이것들을 조합해 분석 흐름, 검토 절차, 전문가 팀, 대규모 업무 체계를 만듭니다.<br>
+      <b style="color:#1a6b52;">한 개로 시작하고, 일이 복잡해질 때 엮는 구조를 더합니다.</b></div>
+   </div>
+  </div>
+  <div class="band">진짜 힘은 조합에서 나옵니다 — 에이전트는 지능형 시스템을 짓는 블록입니다</div>
+  <div class="compo">
+   <div class="cbox"><div class="h">이어받기</div><div class="chain">조사 → 분석 → 작성</div><p>앞 단계의 결과 위에 다음 에이전트가 쌓아 올립니다</p></div>
+   <div class="cbox"><div class="h">관점 나누기</div><div class="chain">관점 A · B · C</div><p>세 시각이 서로 반박하며 답을 다듬습니다</p></div>
+   <div class="cbox"><div class="h">총괄 + 전문가</div><div class="chain">총괄이 결과를 종합</div><p>각 분야 전문가가 기여하고 한 에이전트가 합칩니다</p></div>
+  </div>
+ </div>
+ <div class="close">모델 + 도구 + 지시문 → 에이전트 &nbsp;·&nbsp; 에이전트들 → 팀 → 지능형 시스템</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>04 / 08</span></div>
+</div>
+
+<!-- 05 AgentMesh ② -->
+<div class="s">
+ <div class="eyebrow"><span class="n">05</span><span class="t">AgentMesh ②</span></div>
+ <h1>AgentMesh가 에이전트를 묶는 단위, <em>팀</em></h1>
+ <div class="lead">AgentMesh는 여러 에이전트를 하나로 묶어 팀으로 만듭니다. 누가 속하는지, 서로 어떻게 주고받는지, 무엇을 함께 기억하는지, 언제 끝내는지가 팀마다 정해집니다.</div>
+ <div class="mid" style="align-items:flex-start;gap:24px;">
+  <div style="flex:1;">
+   <div class="rowtbl">
+    <div><b>구성원</b><span>팀에 속한 에이전트 &nbsp;—&nbsp; 조사 · 분석 · 작성</span></div>
+    <div><b>조율 방식</b><span>서로 어떻게 주고받을지 &nbsp;—&nbsp; 넘겨주기 · 함께 보기 · 총괄</span></div>
+    <div><b>공유 맥락</b><span>에이전트 사이에 공유되는 기억 &nbsp;—&nbsp; 업무 개요, 앞선 발견</span></div>
+    <div><b>넘김 규칙</b><span>흐름 제어와 종료 조건 &nbsp;—&nbsp; 최대 반복 횟수, 종료 시점</span></div>
+   </div>
+   <div class="modes">
+    <div class="mbox"><b>넘겨주기</b><span>물음에 가장 맞는 에이전트에게 보냅니다. 안내데스크가 담당자에게 넘기듯</span></div>
+    <div class="mbox"><b>함께 보기</b><span>여러 에이전트가 각자 의견을 내고, 그 결과를 하나로 합칩니다</span></div>
+    <div class="mbox"><b>총괄</b><span>총괄 에이전트가 일을 쪼개 맡긴 뒤 돌아온 결과를 종합합니다</span></div>
+   </div>
+   <div class="whenu">
+     <i>✓</i>여러 관점이나 전문 역할이 필요할 때 &nbsp;&nbsp;
+     <i>✓</i>물음마다 담당이 달라 골라 보내야 할 때 &nbsp;&nbsp;
+     <i>✓</i>넘겨받기 · 토론 · 종합이 필요한 업무일 때
+   </div>
+  </div>
+  <div class="tips">
+   <div class="tag">팀을 잘 짜는 요령</div>
+   <div class="tip"><b>맞는 방식 고르기</b><span>속도는 넘겨주기, 답의 질은 함께 보기, 복잡한 일은 총괄</span></div>
+   <div class="tip"><b>기존 에이전트 재사용</b><span>이미 만들어 둔 것을 조합합니다. 중복해서 만들지 않습니다</span></div>
+   <div class="tip"><b>반복 횟수 제한</b><span>에이전트끼리 무한히 주고받는 것을 막습니다</span></div>
+   <div class="tip" style="margin-bottom:0;"><b>맥락 공유</b><span>발견한 내용이 넘김을 넘어 유지되어 서로 쌓아 나갑니다</span></div>
+  </div>
+ </div>
+ <div class="close">에이전트가 원자라면, 팀은 분자입니다 &nbsp;·&nbsp; 넘겨주기 · 함께 보기 · 총괄</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>05 / 08</span></div>
+</div>
+
+<!-- 04 -->
+<div class="s">
+ <div class="thumb"><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+   <p><b>Data Perception</b><br>03장 여섯 층 중 5층</p></div>
+ <div class="eyebrow"><span class="n">06</span><span class="t">Data Perception</span></div>
+ <h1 style="max-width:920px;font-size:35px;">AgentMesh의 전제조건 <em>Data Perception</em>,<br>오케스트레이션의 성패를 가릅니다</h1>
+ <div class="lead" style="max-width:880px;">AgentMesh가 읽어야 할 데이터를 만드는 층입니다.<br>흩어져 있는 데이터를 옮기지 않고, 있는 자리에서 읽을 수 있게 만듭니다.</div>
+ <div class="mid">
+  <div class="frame">
+   <div class="ftab">Data Perception <i>03장 5층을 확대한 것</i></div>
+   <div class="fbody">
+    <div class="cl">
+     <div class="tag">데이터가 있는 곳</div>
+     <div class="src">클라우드 저장소 — S3 · SharePoint</div>
+     <div class="src">데이터 웨어하우스 — Snowflake</div>
+     <div class="src">기간계 시스템 — SAP · Teamcenter</div>
+     <div class="src">센서 · 설비 데이터</div>
+     <div class="src">실시간 스트림 · DB</div>
+     <div class="src">직접 업로드 — 엑셀 · PDF</div>
+     <div class="bignum">커넥터 25종 이상</div>
+     <div class="subnote">데이터는 원래 있던 자리에 그대로 둡니다</div>
+    </div>
+    <div class="arw">▶</div>
+    <div class="cm">
+     <div class="tag">세 가지 방식으로 읽습니다</div>
+     <div class="lvl"><b>L1 구조 <em>Structural Intelligence</em></b><span>무엇이 있고, 무엇과 연결되는지를 봅니다</span></div>
+     <div class="bi">▲▼</div>
+     <div class="lvl"><b>L2 의미 <em>Semantic Intelligence</em></b><span>그것이 무슨 뜻인지를 봅니다. 글로 이미지를 찾고, 이미지로 문서를 찾습니다</span></div>
+     <div class="bi">▲▼</div>
+     <div class="lvl"><b>L3 운영 <em>Activity Intelligence</em></b><span>언제 무슨 일이 있었는지를 봅니다</span></div>
+     <div class="dpack">업종별 용어와 규칙이 세 층 모두에 적용됩니다</div>
+    </div>
+    <div class="arw">▶</div>
+    <div class="cr">
+     <div class="tag" style="text-align:center;">할 수 있게 되는 것</div>
+     <div class="out">말로 물어보기</div>
+     <div class="out">연결을 따라가며 찾기</div>
+     <div class="out">시간 흐름 보기</div>
+     <div class="subnote" style="text-align:center;">한 번 물으면<br>세 층에서 동시에 찾습니다</div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="close">이것이 되어 있어야 그 위에서 에이전트가 움직입니다.</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>06 / 08</span></div>
+</div>
+
+<!-- 05 -->
+<div class="s">
+ <div class="eyebrow"><span class="n">07</span><span class="t">기존 시스템</span></div>
+ <h1>지금 쓰시는 시스템 위에 <em>그대로 얹힙니다</em></h1>
+ <div class="lead">계열사별로 이미 운영 중인 ERP · MES · POS · 물류 시스템은 손대지 않습니다.</div>
+ <div class="mid" style="flex-direction:column;justify-content:center;">
+  <div style="width:100%;">
+   <div class="dpband"><b>Data Perception</b><span>관계 정보만 정리합니다 · 원본은 원래 자리에</span></div>
+   <div class="pipes">
+     <div class="pipe"><u>▼</u>물어봅니다<br><span style="color:#9aa3ac;">원 시스템으로 내려보냅니다</span></div>
+     <div class="pipe"><u>▲</u>답이 옵니다<br><span style="color:#9aa3ac;">그 자리에서 처리해 돌려줍니다</span></div>
+   </div>
+   <div class="legacy">
+    <div class="leg"><b>ERP</b><span>그대로</span></div>
+    <div class="leg"><b>MES</b><span>그대로</span></div>
+    <div class="leg"><b>POS</b><span>그대로</span></div>
+    <div class="leg"><b>물류</b><span>그대로</span></div>
+   </div>
+   <div class="bul">
+     <span>교체하거나 옮기지 않습니다</span>
+     <span>복사본을 따로 쌓지 않습니다</span>
+     <span>계열사 한 곳씩 붙여 나갑니다</span>
+   </div>
+  </div>
+ </div>
+ <div class="gloss"><span><b>ERP 전사자원관리</b>재무 · 구매 · 재고 · 인사를 한 시스템에서 관리</span><span><b>MES 생산실행시스템</b>공장 현장의 작업지시 · 설비상태 · 품질을 실시간 관리</span><span><b>POS 판매시점관리</b>매장에서 일어난 판매 · 결제 · 재고 변동을 기록</span></div><div class="close">"또 하나의 전사 시스템"을 만드는 일이 되지 않는 것, 이것이 설계의 전제입니다.</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>07 / 08</span></div>
+</div>
+
+<!-- 06 -->
+<div class="s">
+ <div class="eyebrow"><span class="n">08</span><span class="t">CJ에 놓으면</span></div>
+ <h1>CJ 계열사마다 따로 돌아가도, <em>그룹에서는 한눈에 보입니다</em></h1>
+ <div class="notice">이 장은 실제 도입 사례가 아니라, <b>CJ 사업 구조에 대입해 본 가상 구성안</b>입니다.</div>
+ <div class="mid">
+  <div style="width:100%;">
+   <div class="gband">그룹 계층 — AgentMesh 오케스트레이션 · 감사 · 거버넌스</div>
+   <div class="gar"><span>▲</span><span>▲</span><span>▲</span></div>
+   <div class="cos">
+    <div class="co"><b>CJ대한통운</b><i>공급망 · 물류</i><span>운송 네트워크, 협력사, 화물 이력</span></div>
+    <div class="co"><b>CJ올리브영</b><i>리테일 · 고객</i><span>매장과 온라인, 멤버십</span></div>
+    <div class="co"><b>CJ제일제당</b><i>제조 · 품질</i><span>생산 이력, 품질 검사, 공급사</span></div>
+   </div>
+   <div class="dpfoot">공통 데이터층 · Data Perception <em>— 04장에서 확대해 본 그 층</em></div>
+   <div class="chips">
+    <div class="chip"><b>따로 둡니다</b><span>계열사별로 그래프를 나눠 저장합니다</span></div>
+    <div class="chip"><b>남깁니다</b><span>누가 무엇을 물었는지 그룹에서 추적합니다</span></div>
+    <div class="chip"><b>정해둡니다</b><span>계열사 사이는 정해진 통로로만 오갑니다</span></div>
+   </div>
+  </div>
+ </div>
+ <div class="close">업종도 데이터도 다른 세 곳이, 같은 바닥 위에서 각자 돌아갑니다.</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토</span><span>08 / 08</span></div>
+</div>
+
+<!-- 부록 A -->
+<div class="s">
+ <div class="eyebrow"><span class="n" style="background:#8a939d;">A</span><span class="t">부록 · 질의응답용</span></div>
+ <h1>벤더를 검토하실 때 <em>확인하실 네 가지</em></h1>
+ <div class="lead">"다른 업체와 무엇이 다른가" 질문이 나올 때 꺼냅니다.</div>
+ <div class="mid">
+  <div class="q4">
+   <div class="qc"><span class="bd">1</span><b>에이전트<br>오케스트레이션</b><div class="qq">에이전트를 서로 잇는 일을 건마다 해야 합니까, 플랫폼이 기본으로 해줍니까?</div><div class="ab a">A · 건마다 따로 만든다</div><div class="ab b">B · 플랫폼이 기본 제공한다</div></div>
+   <div class="qc"><span class="bd">2</span><b>계열사 간<br>데이터 격리</b><div class="qq">계열사를 나누는 기준이 권한입니까, 저장하는 곳입니까?</div><div class="ab a">A · 권한으로 나눈다</div><div class="ab b">B · 저장소를 나눈다</div></div>
+   <div class="qc"><span class="bd">3</span><b>감사 ·<br>거버넌스</b><div class="qq">접속한 기록만 남습니까, 무엇을 묻고 받았는지까지 남습니까?</div><div class="ab a">A · 접속 기록만 남는다</div><div class="ab b">B · 묻고 받은 것까지 남는다</div></div>
+   <div class="qc"><span class="bd">4</span><b>데이터<br>주권</b><div class="qq">폐쇄망 설치가 기본 사양입니까, 따로 요청해야 합니까?</div><div class="ab a">A · 따로 요청해야 한다</div><div class="ab b">B · 기본 사양이다</div></div>
+  </div>
+ </div>
+ <div class="close">이 네 가지는 특정 제품의 기능이 아니라, 어떤 벤더를 검토하든 적용해야 하는 조건입니다.</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토 · 부록</span><span>A</span></div>
+</div>
+
+<!-- 부록 B -->
+<div class="s">
+ <div class="eyebrow"><span class="n" style="background:#8a939d;">B</span><span class="t">부록 · 질의응답용</span></div>
+ <h1>6주 <em>로드맵</em></h1>
+ <div class="lead">"얼마나 걸리는가 / 어떻게 시작하는가" 질문이 나올 때 꺼냅니다.</div>
+ <div class="mid">
+  <div class="tl">
+   <div><div class="k">착수</div><b>대상</b><span>계열사 한 곳,<br>실제로 답이 필요한<br>질문 하나</span></div>
+   <div class="core"><div class="k">기간</div><div class="big">6<s>주</s></div><b style="margin-top:14px;">결과</b><span>그 질문에 답이 나오는 상태까지.<br>시연용이 아니라 실제 데이터 기준</span></div>
+   <div><div class="k">이후</div><b>운영</b><span>정확도를<br>주 단위로<br>올려 갑니다</span></div>
+   <div><div class="k">확장</div><b>다음</b><span>되는 것이 확인되면<br>다음 계열사로</span></div>
+  </div>
+ </div>
+ <div class="agree"><b>무엇을 정확도라 부를지 먼저 정합니다</b> — 업무마다 기준이 다르므로, 어떤 지표를 어떤 방식으로 측정할지와 확신이 낮은 답을 어떻게 처리할지를 정하고 들어갑니다.</div>
+ <div class="close">한 번 구축하고 끝나는 사업이 아니라, 월 단위로 함께 운영하며 올려 가는 방식입니다.</div>
+ <div class="foot"><span>CJ 에이전트 오케스트레이션 아키텍처 검토 · 부록</span><span>B</span></div>
+</div>
+
+</body></html>

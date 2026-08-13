@@ -1,0 +1,50 @@
+
+:root{--navy:#1a3d6d;--ink:#16232f;--mute:#6b7683;--line:#e3e7ed;--bg:#f7f8fa;--gold:#b8892b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ink);
+ background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{background:var(--navy);color:#fff;padding:46px 0 40px;margin-bottom:34px}
+header h1{font-size:30px;font-weight:800;letter-spacing:-.5px}
+header p{color:#b9cfe9;font-size:15px;margin-top:9px}
+header .meta{color:#8fb0d6;font-size:12.5px;margin-top:18px;letter-spacing:.3px}
+h2{font-size:20px;font-weight:800;margin:38px 0 5px;padding-top:22px;border-top:2px solid var(--ink)}
+h2:first-of-type{border-top:none;padding-top:0}
+.cdesc{font-size:14px;color:var(--mute);margin-bottom:16px}
+ul{list-style:none}
+li{background:#fff;border:1px solid var(--line);border-radius:6px;margin-bottom:9px;
+ display:flex;align-items:center;gap:14px;padding:14px 18px;transition:.12s}
+li:hover{border-color:var(--navy);box-shadow:0 2px 10px rgba(26,61,109,.08)}
+li a{color:var(--ink);text-decoration:none;font-weight:700;font-size:16px;flex:none}
+li .d{color:var(--mute);font-size:13.5px;flex:1}
+li .x{font-size:11px;color:#a9b1bc;font-family:ui-monospace,Menlo,monospace;flex:none}
+.b{font-size:11px;font-weight:700;padding:3px 9px;border-radius:11px;flex:none;letter-spacing:.2px}
+.b-pub{background:#e8f0fa;color:var(--navy)} .b-nda{background:#fdf5e6;color:var(--gold)}
+.b-int{background:#f0f1f3;color:#6b7683}
+footer{margin:54px 0 40px;padding-top:22px;border-top:1px solid var(--line);
+ font-size:12.5px;color:#9aa2ad}
+.note{background:#fdf7ea;border-left:4px solid var(--gold);padding:14px 18px;
+ font-size:13.5px;color:#6f5a20;border-radius:0 5px 5px 0;margin-bottom:30px}
+/* 문서 페이지 */
+.doc{background:#fff;padding:44px 0 60px}
+.doc .wrap{max-width:820px}
+.back{display:inline-block;margin-bottom:26px;color:var(--navy);text-decoration:none;
+ font-size:13.5px;font-weight:700}
+.doc h1{font-size:28px;margin:0 0 26px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+.doc h2{font-size:21px;margin:34px 0 12px;border-top:none;padding-top:0}
+.doc h3{font-size:17px;margin:24px 0 9px;color:var(--navy)}
+.doc h4{font-size:14px;margin:18px 0 6px;color:var(--mute)}
+.doc p,.doc li{font-size:15px;margin-bottom:10px}
+.doc ul,.doc ol{padding-left:22px;margin-bottom:14px}
+.doc li{background:none;border:none;display:list-item;padding:0;margin-bottom:6px}
+.doc table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}
+.doc th{background:var(--bg);border-bottom:2px solid var(--ink);padding:9px 12px;text-align:left}
+.doc td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top}
+.doc blockquote{border-left:3px solid var(--navy);background:var(--bg);padding:12px 18px;
+ margin:16px 0;border-radius:0 4px 4px 0}
+.doc blockquote p{margin:0}
+.doc code{background:var(--bg);padding:2px 6px;border-radius:3px;font-size:13px}
+.doc pre{background:#1c2230;color:#c9d1d9;padding:16px;border-radius:6px;overflow-x:auto;margin:16px 0}
+.doc pre code{background:none;color:inherit;font-size:12.5px}
+.doc a{color:var(--navy)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:30px 0}

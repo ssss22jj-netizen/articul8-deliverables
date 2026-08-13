@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+@page{size:1280px 720px;margin:0;}
+@media screen{
+  body{background:#3f454e;padding:34px 0;}
+  .s{margin:0 auto 34px;border:1px solid #1a1f2b;box-shadow:0 6px 26px rgba(0,0,0,.4);}
+}
+:root{--pri:#2a44d6;--pri2:#5a71e8;--tl:#0ca678;--og:#e8590c;
+ --ink:#1a1f2b;--mute:#69717f;--line:#e3e6ec;--soft:#eef1fd;--bg:#fafbfd;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;}
+.s{width:1280px;height:720px;padding:30px 46px 42px;background:#fff;position:relative;
+   page-break-after:always;display:flex;flex-direction:column;overflow:hidden;}
+.s:last-child{page-break-after:auto;}
+.brand{position:absolute;left:46px;top:26px;font-size:15.4px;font-weight:800;color:var(--pri);letter-spacing:.3px;}
+.brand em{font-style:normal;color:var(--og);}
+.hd{text-align:center;margin:14px 0 12px;}
+.hd h1{font-size:39.7px;font-weight:800;color:var(--ink);letter-spacing:-.6px;}
+.hd h1 small{display:block;font-size:17.9px;font-weight:500;color:var(--mute);margin-top:7px;letter-spacing:0;}
+.hd .en{font-size:14.7px;color:#a6adba;letter-spacing:.4px;margin-top:5px;}
+.body{flex:1;display:flex;gap:16px;min-height:0;}
+.col{display:flex;flex-direction:column;gap:11px;min-width:0;}
+.foot{margin-top:13px;background:var(--pri);color:#fff;border-radius:5px;padding:12px;
+  text-align:center;font-size:19.2px;font-weight:700;}
+.pg{position:absolute;right:46px;top:28px;font-size:14.1px;color:#b9c0cc;letter-spacing:1px;}
+
+.card{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:#fff;}
+.card.tint{background:var(--bg);}
+.ttl{font-size:19.2px;font-weight:800;color:var(--ink);margin-bottom:9px;}
+.ttl.pri{color:var(--pri);} .ttl.tl{color:var(--tl);} .ttl.og{color:var(--og);}
+
+table{width:100%;border-collapse:collapse;}
+th{background:var(--pri);color:#fff;font-size:15.4px;font-weight:700;padding:8px 12px;text-align:left;}
+td{border-bottom:1px solid var(--line);padding:8px 12px;font-size:16.0px;color:#4a525f;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+td.k{font-weight:700;color:var(--ink);width:34%;}
+td.ex{color:#8a92a0;font-size:14.7px;width:32%;}
+
+.chk{font-size:16.0px;color:#4a525f;line-height:1.85;}
+.chk i{font-style:normal;color:var(--tl);font-weight:800;margin-right:6px;}
+.cfg{background:#1c2230;border-radius:6px;padding:14px 16px;font-size:14.7px;line-height:1.85;
+  color:#8e97a8;font-family:'SF Mono',Menlo,monospace;}
+.cfg b{color:#5eead4;font-weight:400;}
+.cfg .t{color:#fff;font-family:'Apple SD Gothic Neo',sans-serif;font-size:17.3px;font-weight:800;
+  display:block;margin-bottom:9px;}
+.tip{margin-bottom:9px;}
+.tip:last-child{margin-bottom:0;}
+.tip b{display:block;font-size:16.0px;color:var(--pri);}
+.tip span{font-size:14.7px;color:#69717f;line-height:1.5;}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.mini{border:1px solid var(--line);border-radius:6px;padding:13px 15px;background:#fff;}
+.mini .h{font-size:17.9px;font-weight:800;margin-bottom:4px;}
+.mini .sub{font-size:14.7px;color:var(--ink);font-weight:600;margin-bottom:7px;}
+.mini p{font-size:14.7px;color:#69717f;line-height:1.55;}
+.chip{border-radius:4px;padding:7px;text-align:center;font-size:14.7px;font-weight:700;
+  color:#fff;margin-bottom:8px;}
+
+.bandline{background:var(--og);color:#fff;border-radius:5px;padding:10px;text-align:center;
+  font-size:17.9px;font-weight:800;}
+.eq{background:var(--pri);color:#fff;border-radius:5px;padding:9px;text-align:center;
+  font-size:17.3px;font-weight:800;margin-top:9px;}
+.part{border:1px solid var(--line);border-radius:5px;padding:9px 12px;margin-bottom:7px;}
+.part b{display:block;font-size:16.6px;color:var(--pri);}
+.part span{font-size:14.7px;color:#69717f;}
+
+.tl-row{display:flex;gap:11px;font-size:15.4px;padding:7px 0;border-bottom:1px solid var(--line);}
+.tl-row:last-child{border-bottom:none;}
+.tl-row .t{width:60px;flex:none;color:#a6adba;font-family:'SF Mono',Menlo,monospace;font-size:14.1px;}
+.tl-row .who{width:82px;flex:none;font-weight:800;color:var(--pri);}
+.tl-row .what{color:#4a525f;line-height:1.45;}
+.tl-row.warn .who{color:var(--og);}
+.tl-row.ok .who{color:var(--tl);}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.role{border:1px solid var(--line);border-radius:5px;padding:7px;text-align:center;}
+.role b{display:block;font-size:16.0px;color:var(--ink);}
+.role span{font-size:13.4px;color:#8a92a0;}
+.layer{border-left:4px solid var(--pri);background:var(--bg);padding:10px 14px;margin-bottom:8px;}
+.layer b{display:block;font-size:17.3px;color:var(--ink);}
+.layer span{font-size:14.7px;color:#69717f;line-height:1.5;}
+.note{margin-top:9px;font-size:14.7px;color:#8a92a0;line-height:1.55;}
+.cycle{display:flex;gap:11px;}
+.step{flex:1;border:1px solid var(--line);border-radius:6px;padding:13px 15px;}
+.step .n{width:24px;height:24px;border-radius:50%;color:#fff;font-size:14.7px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.step b{display:block;font-size:17.3px;color:var(--ink);margin-bottom:5px;}
+.step span{font-size:14.7px;color:#69717f;line-height:1.55;}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:11px;}
+.e{font-style:normal;font-weight:400;font-size:.7em;color:#a6adba;margin-left:5px;letter-spacing:.2px;}
+.mini .h .e,.ttl .e{display:block;margin-left:0;margin-top:2px;}
+.four div{border:1px solid var(--line);border-radius:5px;padding:9px;text-align:center;
+  font-size:15.4px;font-weight:700;color:var(--ink);}
+</style></head><body>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">01 / 14</div>
+ <div class="hd"><h1>에이전트, 지능의 최소 단위<small>두뇌와 직무기술서와 장비와 일하는 성향을 갖춘 직원</small></h1><div class="en">Agents: The Atomic Unit of Intelligence ①</div></div>
+ <div class="body">
+ <div class="col" style="flex:1.5;">
+  <div class="card" style="padding:0;overflow:hidden;">
+   <table><tr><th>구성 요소</th><th>하는 일</th><th>예</th></tr>
+    <tr><td class="k">모델 엔드포인트<i class="e">Model Endpoint</i></td><td>판단을 담당하는 언어모델</td><td class="ex">GPT-4, Claude, Llama</td></tr>
+    <tr><td class="k">시스템 프롬프트<i class="e">System Prompt</i></td><td>성격과 지시, 하면 안 되는 것</td><td class="ex">"당신은 전문 리서처입니다…"</td></tr>
+    <tr><td class="k">도구<i class="e">Tools</i></td><td>에이전트가 실제로 할 수 있는 동작</td><td class="ex">웹 검색, 계산기, 코드 실행</td></tr>
+    <tr><td class="k">동작 설정값<i class="e">Parameters</i></td><td>어떻게 움직일지 조정하는 값</td><td class="ex">temperature, max_iterations</td></tr>
+   </table></div></div>
+ <div class="col" style="width:430px;flex:none;">
+  <div class="card tint" style="flex:1;">
+   <div class="ttl tl">에이전트 하나로 충분할 때<i class="e">When to Use a Single Agent</i></div>
+   <div class="chk">
+     <i>✓</i>업무가 한 가지에 집중돼 있어 여러 관점이 필요 없을 때<br><br>
+     <i>✓</i>속도가 중요할 때. 하나뿐이면 서로 맞출 일이 없다<br><br>
+     <i>✓</i>시제품을 만들 때. 단순하게 시작하고 나중에 복잡도를 더한다</div></div></div>
+</div>
+ <div class="foot">한 가지에 집중된 에이전트로 시작한다 · 빠르게 시제품을 만든다 · 문제가 요구할 때 스쿼드로 조합한다</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">02 / 14</div>
+ <div class="hd"><h1>잘 만든 에이전트 설정<small>무엇을 어떻게 정해 두느냐가 에이전트의 품질을 가른다</small></h1><div class="en">Agents: The Atomic Unit of Intelligence ②</div></div>
+ <div class="body">
+ <div class="col" style="flex:1;">
+  <div class="cfg" style="flex:1;"><span class="t">설정 예 — Research Agent</span>
+   "name": "Research Agent"<br>"tools": ["web_search", "calculator"]<br>
+   <b>"temperature": 0.3</b><br><b>"max_iterations": 5</b><br><b>"thinking_enabled": true</b><br><br>
+   "system_prompt": 문제에 어떻게 접근할지에 대한 구조화된 지침.<br>단순히 "도움이 되는 조수"가 아니라…</div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="flex:1;">
+   <div class="ttl pri">이 설정이 좋은 이유</div>
+   <div class="tip" style="margin-bottom:16px;"><b>구조화된 시스템 프롬프트</b><span>접근 방식과 제약, 결과물의 품질까지 구체적으로 지시한다</span></div>
+   <div class="tip" style="margin-bottom:16px;"><b>낮은 온도값 (0.3)</b><span>리서치 업무에서는 창의성보다 일관성과 정확성이 중요하다</span></div>
+   <div class="tip" style="margin-bottom:16px;"><b>반복 횟수 제한 (5)</b><span>무한히 도는 것을 막는다. 대부분의 업무에는 다섯 번이면 충분하다</span></div>
+   <div class="tip"><b>최소한의 도구 구성</b><span>필요한 것만 붙인다. 여기서는 웹 검색과 계산기 둘뿐</span></div></div></div>
+</div>
+ <div class="foot">지시는 구체적으로 · 값은 보수적으로 · 도구는 최소한으로</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">03 / 14</div>
+ <div class="hd"><h1>AgentMesh, AI가 실제로 움직이는 곳<small>모델과 도구와 프롬프트를 묶어, 실제로 일을 하는 에이전트로 만든다</small></h1><div class="en">AgentMesh: Where AI Comes Alive ①</div></div>
+ <div class="body">
+ <div class="col" style="width:430px;flex:none;">
+  <div class="card" style="background:var(--soft);border-color:#c8d2f7;flex:1;">
+   <div class="ttl pri">에이전트 하나 만들기<i class="e">Create a Single Agent</i></div>
+   <div class="part"><b>모델 엔드포인트</b><span>판단을 담당하는 언어모델</span></div>
+   <div class="part"><b>시스템 프롬프트</b><span>성격과 지시, 하면 안 되는 것</span></div>
+   <div class="part" style="margin-bottom:0;"><b>도구</b><span>에이전트가 실제로 할 수 있는 동작</span></div>
+   <div class="eq">= 실제로 일을 하는 에이전트</div></div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="background:#f0fbf7;border-color:#b8e6d5;flex:1;">
+   <div class="ttl tl">낱개가 아니라 조립 단위로 본다<i class="e">Think in Building Blocks</i></div>
+   <div style="font-size:17px;color:#4a525f;line-height:2;">
+     에이전트 하나는 집중된 업무와 빠른 처리, 시제품 제작에 쓸모가 있다.<br><br>
+     이것들을 조합하면 분석 흐름, 토론 절차, 전문가 팀, 대규모 업무 체계가 된다.<br><br>
+     <b style="color:var(--tl);">하나로 시작하고, 복잡해질 때 조율 구조를 더한다.</b></div></div></div>
+</div>
+ <div class="foot">모델 + 도구 + 프롬프트 → 에이전트</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">04 / 14</div>
+ <div class="hd"><h1>진짜 힘은 조합에서 나온다<small>에이전트는 지능형 시스템을 짓는 블록이다</small></h1><div class="en">AgentMesh: Where AI Comes Alive ②</div></div>
+ <div class="body">
+ <div class="three" style="width:100%;">
+  <div class="mini" style="display:flex;flex-direction:column;">
+    <div class="h" style="color:var(--pri);">이어받기<i class="e">Handoff Chain</i></div>
+    <div class="chip" style="background:var(--pri);margin-top:10px;">조사 → 분석 → 작성</div>
+    <p style="flex:1;">순차 전문화. 각 에이전트가 앞 단계의 결과 위에 쌓아 올린다</p></div>
+  <div class="mini" style="display:flex;flex-direction:column;">
+    <div class="h" style="color:var(--og);">다관점 토론<i class="e">Multi-Perspective Debate</i></div>
+    <div class="chip" style="background:var(--og);margin-top:10px;">관점 A · B · C</div>
+    <p style="flex:1;">세 시각이 서로 반박하며 답을 다듬는다</p></div>
+  <div class="mini" style="display:flex;flex-direction:column;">
+    <div class="h" style="color:var(--tl);">총괄 + 전문가<i class="e">Coordinator + Specialists</i></div>
+    <div class="chip" style="background:var(--tl);margin-top:10px;">총괄이 전문가 결과를 종합</div>
+    <p style="flex:1;">각 분야 전문가가 기여하고, 한 에이전트가 통합한다</p></div>
+ </div>
+</div>
+ <div class="foot">에이전트들 → 스쿼드 → 지능형 시스템</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">05 / 14</div>
+ <div class="hd"><h1>AgentMesh 서비스의 구조<small>무엇을 정의할지와 어떻게 돌릴지를 한 플랫폼에서</small></h1><div class="en">Understanding the AgentMesh Service</div></div>
+ <div class="body">
+ <div class="col" style="width:100%;">
+  <div class="card" style="background:var(--soft);border-color:#c8d2f7;flex:1;">
+   <div class="ttl pri">엔티티 관리<i class="e">Entity Management</i> <span style="font-weight:400;font-size:15px;color:var(--mute);">— 무엇을 정의하나</span></div>
+   <div class="three">
+    <div class="mini"><div class="h" style="color:var(--pri);">에이전트<i class="e">Agents</i></div><div class="sub">하나의 AI 단위</div>
+      <p>모델 + 도구 + 시스템 프롬프트</p><div class="chip" style="background:var(--pri);margin:10px 0 0;">원자 단위의 지능</div></div>
+    <div class="mini"><div class="h" style="color:var(--tl);">스쿼드<i class="e">Squads</i></div><div class="sub">에이전트 묶음</div>
+      <p>여럿이 함께 일하는 단위</p><div class="chip" style="background:var(--tl);margin:10px 0 0;">조율된 업무 흐름</div></div>
+    <div class="mini"><div class="h" style="color:var(--og);">디지털 트윈<i class="e">Digital Twins</i></div><div class="sub">가상 모델</div>
+      <p>실물을 그대로 옮긴 복제본</p><div class="chip" style="background:var(--og);margin:10px 0 0;">자산 시뮬레이션과 감시</div></div>
+   </div></div>
+  <div class="card" style="background:#fff8f2;border-color:#f5d5bb;">
+   <div class="ttl og">실행 관리<i class="e">Run Management</i> <span style="font-weight:400;font-size:15px;color:var(--mute);">— 어떻게 돌리나</span></div>
+   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+    <div class="mini"><div class="sub" style="color:var(--og);font-size:16px;">실행 걸기<i class="e">Launch runs</i></div>
+      <p>에이전트든 스쿼드든 트윈이든 실행을 건다</p></div>
+    <div class="mini"><div class="sub" style="color:var(--og);font-size:16px;">진행 상황 보기<i class="e">Stream progress</i></div>
+      <p>WebSocket이나 SSE로 실시간으로 받는다</p></div>
+    <div class="mini"><div class="sub" style="color:var(--og);font-size:16px;">이력 추적<i class="e">Track history</i></div>
+      <p>상태와 결과, 전체 실행 이력이 남는다</p></div>
+    <div class="mini"><div class="sub" style="color:var(--og);font-size:16px;">실패 처리<i class="e">Handle failures</i></div>
+      <p>무너지지 않고 복구하며, 무슨 일이었는지 본다</p></div>
+   </div></div></div>
+</div>
+ <div class="foot">엔티티는 한 번 정의한다 · 실행은 필요할 때 건다 · 흘려보내고, 추적하고, 복구한다</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">06 / 14</div>
+ <div class="hd"><h1>스쿼드, 함께 일하는 에이전트 묶음<small>역할과 조율 규칙과 공유 맥락을 가진 팀. 혼자 일하는 직원이 아니다</small></h1><div class="en">Squads: Groups of Agents Working Together ①</div></div>
+ <div class="body">
+ <div class="col" style="width:100%;">
+  <div class="card" style="padding:0;overflow:hidden;">
+   <table><tr><th>구성 요소</th><th>하는 일</th><th>예</th></tr>
+    <tr><td class="k">구성원<i class="e">Members</i></td><td>스쿼드에 속한 에이전트</td><td class="ex">리서처, 분석가, 작성자</td></tr>
+    <tr><td class="k">조율 방식<i class="e">Coordination Mode</i></td><td>에이전트끼리 어떻게 주고받는가</td><td class="ex">route · collaborate · coordinate</td></tr>
+    <tr><td class="k">공유 맥락<i class="e">Shared Context</i></td><td>에이전트 사이에 공유되는 기억과 상태</td><td class="ex">업무 개요, 앞서 찾은 것</td></tr>
+    <tr><td class="k">넘김 규칙<i class="e">Handoff Rules</i></td><td>흐름을 제어하고 언제 끝낼지 정한다</td><td class="ex">max_rounds, 종료 조건</td></tr>
+   </table></div>
+  <div class="card tint" style="flex:1;">
+   <div class="ttl tl">조율 방식 세 가지<i class="e">Three Coordination Modes</i></div>
+   <div class="three">
+    <div class="mini" style="border-color:#c8d2f7;"><div class="h" style="color:var(--pri);">ROUTE</div>
+      <div class="sub">물음에 가장 맞는 하나로</div><p>안내데스크가 의도를 보고 맞는 전문가에게 넘기듯</p></div>
+    <div class="mini" style="border-color:#b8e6d5;"><div class="h" style="color:var(--tl);">COLLABORATE</div>
+      <div class="sub">전문가 전원이 의견을 낸다</div><p>여럿이 기여하고, 모든 관점의 결과를 합친다</p></div>
+    <div class="mini" style="border-color:#f5d5bb;"><div class="h" style="color:var(--og);">COORDINATE</div>
+      <div class="sub">프로젝트 매니저 방식</div><p>총괄이 일을 쪼개 배정하고 결과를 종합한다</p></div>
+   </div></div></div>
+</div>
+ <div class="foot">에이전트가 원자라면 스쿼드는 분자다 · ROUTE · COLLABORATE · COORDINATE</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">07 / 14</div>
+ <div class="hd"><h1>스쿼드를 쓸 때, 그리고 잘 짜는 법<small>언제 묶을지와, 묶을 때 무엇을 정해 둘지</small></h1><div class="en">Squads: Groups of Agents Working Together ②</div></div>
+ <div class="body">
+ <div class="col" style="flex:1;">
+  <div class="card tint">
+   <div class="ttl tl">스쿼드를 쓸 때<i class="e">When to Use a Squad</i></div>
+   <div class="chk">
+     <i>✓</i>여러 관점이나 전문 역할이 업무에 도움이 될 때<br>
+     <i>✓</i>물음마다 담당 전문가가 달라 골라 보내야 할 때<br>
+     <i>✓</i>넘겨받기, 토론, 총괄의 종합이 필요한 업무일 때</div></div>
+  <div class="cfg" style="flex:1;"><span class="t">설정 예 — Research Squad</span>
+   "name": "Research Squad"<br><b>"mode": "coordinate"</b><br>
+   "members": ["research", "analyst", "writer"]<br><b>"max_rounds": 3</b><br><b>"shared_context": true</b><br><br>
+   "coordinator_prompt": 일을 어떻게 쪼개고, 누구에게 맡기고, 마지막에 어떻게 합칠지에 대한 명시적 규칙…</div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="flex:1;">
+   <div class="ttl pri">스쿼드를 잘 짜는 요령</div>
+   <div class="tip" style="margin-bottom:18px;"><b>맞는 방식 고르기</b><span>속도는 route, 답의 질은 collaborate, 복잡한 일은 coordinate</span></div>
+   <div class="tip" style="margin-bottom:18px;"><b>기존 에이전트 재사용</b><span>이미 정의해 둔 에이전트를 조합한다. 중복해서 만들지 않는다</span></div>
+   <div class="tip" style="margin-bottom:18px;"><b>조율 횟수 제한</b><span>max_rounds가 에이전트끼리 무한히 주고받는 것을 막는다</span></div>
+   <div class="tip"><b>맥락 공유</b><span>찾아낸 것이 넘김을 넘어 유지되어 서로 쌓아 나간다</span></div></div></div>
+</div>
+ <div class="foot">이미 만든 것을 조합한다 · 횟수를 제한한다 · 맥락을 공유한다</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">08 / 14</div>
+ <div class="hd"><h1>미션 오케스트레이터가 필요한 이유<small>단순 실행으로는 부족한 정교한 패턴을 위한 전용 서비스</small></h1><div class="en">Mission Orchestrator: Complex Workflow Coordination ①</div></div>
+ <div class="body">
+ <div class="col" style="flex:1;">
+  <div class="card" style="background:#fff8f2;border-color:#f5d5bb;flex:1;">
+   <div class="ttl og">단순 실행으로는 어려운 것<i class="e">Beyond Simple Runs</i></div>
+   <div style="font-size:17px;color:#4a525f;line-height:1.9;">
+     품질 기준을 만족할 때까지 결과물을 계속 다듬어야 한다면?<br><br>
+     에이전트 다섯 개를 동시에 돌리고 결과를 합쳐야 한다면?<br><br>
+     중간 결과에 따라 실행 경로가 갈라져야 한다면?</div>
+   <div class="note" style="font-size:15px;">이런 패턴은 단순 실행으로는 어색하다. 플랫폼 바깥에 조율 코드를 직접 짜고, 상태를 스스로 관리하고, 실패를 손으로 처리해야 한다.</div></div>
+  <div class="card" style="background:var(--pri);border-color:var(--pri);color:#fff;">
+   <div style="font-size:17px;font-weight:800;margin-bottom:4px;">미션 오케스트레이터가 이것을 해결한다</div>
+   <div style="font-size:15px;color:#c5cffa;">별도 서비스 · 자체 URL · 복잡한 조율이 내장</div></div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="border-color:#c8d2f7;flex:1;">
+   <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+    <div style="background:var(--pri);color:#fff;border-radius:5px;padding:9px 18px;font-size:17px;font-weight:800;">미션</div>
+    <div style="font-size:15px;color:#4a525f;line-height:1.5;padding-top:5px;">목표 — "4분기 매출 데이터를 분석하고 경영진 요약본을 만들어라"</div></div>
+   <div style="background:var(--soft);border-radius:5px;padding:12px;text-align:center;margin-bottom:14px;">
+     <b style="font-size:15px;color:var(--pri);">조율 패턴<i class="e">Coordination Pattern</i></b>
+     <div style="font-size:15px;color:#69717f;margin-top:4px;">순차 · 병렬 · 조건분기 · 반복 · 분산취합 · 브레인스토밍</div></div>
+   <div class="three">
+    <div class="role"><b>과업 1</b><span>에이전트 A</span></div>
+    <div class="role"><b>과업 2</b><span>에이전트 B</span></div>
+    <div class="role"><b>과업 3</b><span>에이전트 C</span></div></div>
+   <div class="note" style="text-align:center;font-size:15px;">미션은 정해진 실행 패턴을 따라 하나 이상의 에이전트를 조율하는, 목표를 향한 업무 흐름이다.</div></div></div>
+</div>
+ <div class="foot">AgentMesh는 개별 엔티티와 단순 실행 · 미션 오케스트레이터는 정교한 흐름과 복잡한 조율</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">09 / 14</div>
+ <div class="hd"><h1>단순 실행과 미션의 차이<small>무엇이 달라지고, 언제 미션을 쓰는가</small></h1><div class="en">Mission Orchestrator: Complex Workflow Coordination ②</div></div>
+ <div class="body">
+ <div class="col" style="flex:1.1;">
+  <div class="card" style="padding:0;overflow:hidden;flex:1;">
+   <table><tr><th>항목</th><th>단순 실행</th><th>미션</th></tr>
+    <tr><td class="k" style="width:24%;">복잡도</td><td>에이전트 하나, 업무 하나</td><td>다중 에이전트 흐름</td></tr>
+    <tr><td class="k">조율</td><td>route · collaborate</td><td>병렬 · 반복 · 조건분기</td></tr>
+    <tr><td class="k">상태 관리</td><td>에이전트가 한다</td><td>오케스트레이터가 한다</td></tr>
+    <tr><td class="k">실패 처리</td><td>에이전트 수준</td><td>미션 수준 + 재시도</td></tr>
+    <tr><td class="k">쓰임새</td><td>빠른 단발 업무</td><td>복잡한 업무 흐름</td></tr>
+   </table></div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="background:#f0fbf7;border-color:#b8e6d5;flex:1;">
+   <div class="ttl tl">미션을 쓸 때<i class="e">When to Use Missions</i></div>
+   <div style="font-size:16px;color:#4a525f;line-height:2.1;">
+     · 여러 단계를 거칠 때 — 조사한 다음 분석하고 그다음 요약<br>
+     · 조건에 따라 갈라질 때 — 부정 신호가 잡히면 사람에게 넘긴다<br>
+     · 기준을 채울 때까지 반복할 때 — 품질 점수가 0.8을 넘을 때까지<br>
+     · 동시에 돌리고 합칠 때 — 다섯 관점을 하나로 병합<br>
+     · 오류를 복구할 때 — 실패한 단계를 다시 시도하거나 대체 경로로</div></div></div>
+</div>
+ <div class="foot">엔티티와 단순 실행은 AgentMesh · 복잡한 조율은 미션 오케스트레이터</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">10 / 14</div>
+ <div class="hd"><h1>디지털 트윈, 실물의 가상 모델<small>감시하고 시뮬레이션하고 따져볼 수 있는, 에이전트가 붙은 영구 복제본</small></h1><div class="en">Digital Twins: Virtual Models of Real Things ①</div></div>
+ <div class="body">
+ <div class="col" style="width:100%;">
+  <div class="card" style="padding:0;overflow:hidden;">
+   <table><tr><th style="background:var(--og);">구성 요소</th><th style="background:var(--og);">하는 일</th><th style="background:var(--og);">예</th></tr>
+    <tr><td class="k">트윈 정의<i class="e">Twin Definition</i></td><td>무엇인지, 어떤 항목으로 이루어지는지</td><td class="ex">터빈, 차량, 전력망 노드</td></tr>
+    <tr><td class="k">데이터 연결<i class="e">Data Bindings</i></td><td>트윈에 붙는 실시간 데이터</td><td class="ex">원격측정, PLM, 센서 스트림</td></tr>
+    <tr><td class="k">상태 모델<i class="e">State Model</i></td><td>현재 상태와 이력, 관계</td><td class="ex">건강도 점수, 고장 이력</td></tr>
+    <tr><td class="k">결합 에이전트<i class="e">Bound Agents</i></td><td>트윈을 감시하거나 조작하는 에이전트</td><td class="ex">감시, 예측, 경보 에이전트</td></tr>
+   </table></div>
+  <div class="card tint" style="flex:1;">
+   <div class="ttl og">디지털 트윈을 이해하는 세 가지 비유</div>
+   <div class="three">
+    <div class="mini" style="border-color:#c8d2f7;"><div class="h" style="color:var(--pri);">실시간 대시보드<i class="e">Live Dashboard</i></div>
+      <p style="margin-top:8px;">자산 상태를 실시간으로 본다. 항상 최신이고 언제든 물어볼 수 있다</p></div>
+    <div class="mini" style="border-color:#b8e6d5;"><div class="h" style="color:var(--tl);">시뮬레이션 공간<i class="e">Simulation Sandbox</i></div>
+      <p style="margin-top:8px;">운영 중인 시스템을 건드리지 않고 가정 시나리오를 시험한다</p></div>
+    <div class="mini" style="border-color:#f5d5bb;"><div class="h" style="color:var(--og);">에이전트가 사는 곳<i class="e">Agent Host</i></div>
+      <p style="margin-top:8px;">트윈에 붙은 전문 에이전트가 감시하고 예측하고 대응한다</p></div>
+   </div></div></div>
+</div>
+ <div class="foot">디지털 트윈은 물리 시스템과 에이전트 지능을 잇는다 · 감시 · 예측 · 시뮬레이션</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">11 / 14</div>
+ <div class="hd"><h1>디지털 트윈을 쓸 때, 그리고 잘 만드는 법<small>언제 만들지와, 만들 때 무엇을 정해 둘지</small></h1><div class="en">Digital Twins: Virtual Models of Real Things ②</div></div>
+ <div class="body">
+ <div class="col" style="flex:1;">
+  <div class="card tint">
+   <div class="ttl og">디지털 트윈을 쓸 때<i class="e">When to Use a Digital Twin</i></div>
+   <div class="chk">
+     <i>✓</i>물리적 자산이나 시스템의 영구적인 가상 모델이 필요할 때<br>
+     <i>✓</i>실시간 감시가 에이전트의 대응을 촉발해야 할 때<br>
+     <i>✓</i>시나리오를 시험하거나 고장을 예측하거나, 변경을 안전하게 검증할 때</div></div>
+  <div class="cfg" style="flex:1;"><span class="t">설정 예 — Turbine Twin</span>
+   "name": "Turbine Twin"<br>"asset_type": "industrial_equipment"<br>
+   "data_sources": ["telemetry", "maintenance"]<br><b>"bound_agents": ["monitor", "predict"]</b><br>
+   <b>"sync_interval": "30s"</b><br><br>
+   "state_schema": 트윈이 시간에 따라 추적할 건강 지표와 임계값, 관계를 정의…</div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="flex:1;">
+   <div class="ttl og">트윈을 잘 만드는 요령</div>
+   <div class="tip" style="margin-bottom:18px;"><b>일시적이 아니라 영구적</b><span>트윈 상태가 실행 사이에도 유지된다. 쌓여 가는 자산이다</span></div>
+   <div class="tip" style="margin-bottom:18px;"><b>실시간 데이터 연결</b><span>원격측정과 PLM, 운영 데이터를 붙인다. 한 번 찍은 스냅샷이 아니다</span></div>
+   <div class="tip" style="margin-bottom:18px;"><b>에이전트가 붙은 지능</b><span>감시와 예측 에이전트가 트윈 상태에 따라 자동으로 움직인다</span></div>
+   <div class="tip"><b>안전한 시뮬레이션</b><span>실제 시스템을 바꾸기 전에 트윈에 대고 먼저 돌려 본다</span></div></div></div>
+</div>
+ <div class="foot">상태는 남고 · 데이터는 실시간으로 붙고 · 시험은 안전하게</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">12 / 14</div>
+ <div class="hd"><h1>AgentMesh, 다중 에이전트 오케스트레이션<small>범용 언어모델 하나가 아니라, 조율된 스쿼드 안의 전문 에이전트들</small></h1><div class="en">AgentMesh: Multi-Agent Orchestration</div></div>
+ <div class="body">
+ <div class="col" style="flex:1;">
+  <div class="card" style="border-color:#c8d2f7;">
+   <div class="ttl pri">미션 아레나<i class="e">Mission Arena</i></div>
+   <div style="font-size:16px;color:#4a525f;line-height:1.7;">여러 에이전트에 걸친 조율된 흐름으로 미션을 정의한다. 각 미션은 전체 감사 기록을 남기며 실행된다.</div>
+   <div class="note">· 다중 에이전트 분석 흐름 &nbsp; · 경보 분류와 상위 보고 &nbsp; · 규제 준수 검증</div></div>
+  <div class="card tint" style="flex:1;">
+   <div class="ttl">업무 유형에 따라 알아서 나뉜다</div>
+   <div style="font-size:15px;color:#4a525f;line-height:1.8;">
+     구조와 연결 관계를 묻는 질문 → <b style="color:var(--pri);">그래프 엔진</b><br>
+     위험도 점수 산정 → <b style="color:var(--pri);">확률 모델</b><br>
+     서술형 브리핑 작성 → <b style="color:var(--pri);">도메인 특화 언어모델</b><br>
+     검증과 정책 확인 → <b style="color:var(--pri);">전용 에이전트</b></div>
+   <div class="roles" style="margin-top:10px;">
+    <div class="role"><b>리서치</b><span>근거 수집</span></div><div class="role"><b>리스크</b><span>확률 평가</span></div>
+    <div class="role"><b>액션</b><span>실행</span></div><div class="role"><b>컴플라이언스</b><span>규제 확인</span></div>
+    <div class="role"><b>리포트</b><span>종합</span></div><div class="role"><b>레드팀</b><span>적대적 검증</span></div></div></div></div>
+ <div class="col" style="flex:1;">
+  <div class="card" style="flex:1;">
+   <div class="ttl">판단 이력 기록<i class="e">Decision Provenance Timeline</i></div>
+   <div class="tl-row"><span class="t">10:23:41</span><span class="who">리서치</span><span class="what">자산 고장들 사이에서 상관관계를 찾았다</span></div>
+   <div class="tl-row"><span class="t">10:23:44</span><span class="who">리스크</span><span class="what">신뢰도 94.2% — 확률 모델 기준</span></div>
+   <div class="tl-row warn"><span class="t">10:23:47</span><span class="who">컴플라이언스</span><span class="what">이의 제기: 규제 맥락이 빠져 있다</span></div>
+   <div class="tl-row"><span class="t">10:23:49</span><span class="who">리서치</span><span class="what">규제 항목을 얹어 다시 질의했다</span></div>
+   <div class="tl-row ok"><span class="t">10:23:51</span><span class="who">컴플라이언스</span><span class="what">승인 — 감사 해시 #0x5F3A9D2B</span></div>
+   <div class="note">모든 판단이 기록된다 · 전체 이력 보존 · 데이터 유출 없음</div></div></div>
+</div>
+ <div class="foot">스스로 조율하는 스쿼드 · 어떤 모델이든 · 어떤 도구든 · 폐쇄망에서도 돌아간다</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">13 / 14</div>
+ <div class="hd"><h1>차별화의 세 층<small>무엇이 이 플랫폼을 다르게 만드는가</small></h1><div class="en">Three Layers of Differentiation</div></div>
+ <div class="body">
+ <div class="col" style="width:100%;justify-content:center;">
+  <div class="layer" style="padding:20px 24px;">
+    <b style="font-size:22px;">도메인 인지형 지식 그래프<i class="e">Domain-Aware Knowledge Graphs</i></b>
+    <span style="font-size:17px;">우리 시스템을 지도로 만든다 — 구조, 자산, 관계 &nbsp;/&nbsp; 그래프 엔진</span></div>
+  <div class="layer" style="border-color:var(--tl);padding:20px 24px;">
+    <b style="font-size:22px;">도메인 특화 모델<i class="e">Domain-Specific Models, DSM</i></b>
+    <span style="font-size:17px;">프롬프트로 시킨 것이 아니라 훈련된 지능 &nbsp;/&nbsp; 확률 모델과 전문 모델</span></div>
+  <div class="layer" style="border-color:var(--og);padding:20px 24px;margin-bottom:0;">
+    <b style="font-size:22px;">AgentMesh / ModelMesh</b>
+    <span style="font-size:17px;">여러 모델을 함께 쓰는 추론 — 스스로 최적화한다 &nbsp;/&nbsp; 조율과 라우팅</span></div>
+  <div class="note" style="text-align:center;font-size:17px;margin-top:20px;">지식 그래프 → DSM에 공급 → AgentMesh 추론 엔진에 공급</div></div>
+</div>
+ <div class="foot">지도를 그리고 · 훈련된 모델을 얹고 · 여럿을 조율한다</div>
+</div>
+
+<div class="s">
+ <div class="brand">Articul<em>8</em> AI</div><div class="pg">14 / 14</div>
+ <div class="hd"><h1>컬러팀 검토 절차<small>파랑이 초안을 쓰고, 빨강이 비판하고, 파랑이 고친다. 고객에게 낼 수 있을 때까지 도는 고리</small></h1><div class="en">Color Team Review Process</div></div>
+ <div class="body">
+ <div class="col" style="width:100%;">
+  <div class="cycle" style="flex:1;">
+   <div class="step" style="display:flex;flex-direction:column;"><div class="n" style="background:var(--pri);">1</div><b>초안을 쓴다</b>
+     <span style="color:var(--pri);font-weight:700;">블루팀</span><span style="flex:1;">제안서 초안을 만든다</span></div>
+   <div class="step" style="display:flex;flex-direction:column;"><div class="n" style="background:#e03131;">2</div><b>KPI와 요구사항에 대고 비판한다</b>
+     <span style="color:#e03131;font-weight:700;">레드팀</span><span style="flex:1;">빈틈, 약한 주장, 근거 부족, 앞뒤가 안 맞는 곳을 찔러 본다</span></div>
+   <div class="step" style="display:flex;flex-direction:column;"><div class="n" style="background:var(--pri);">3</div><b>피드백을 반영해 고친다</b>
+     <span style="color:var(--pri);font-weight:700;">블루팀</span><span style="flex:1;">지적받은 것을 반영하고 다음 회차를 준비한다</span></div>
+   <div class="step" style="background:var(--soft);border-color:#c8d2f7;display:flex;flex-direction:column;"><div class="n" style="background:var(--og);">↻</div>
+     <b>빈틈이 닫힐 때까지 반복</b><span style="flex:1;">준비가 될 때까지 이 고리를 계속 돈다</span></div>
+  </div>
+  <div class="card" style="background:#fff8f2;border-color:#f5d5bb;">
+   <div class="ttl og">고객 상황 모의<i class="e">Customer Simulation</i></div>
+   <div style="font-size:17px;color:#4a525f;line-height:1.6;">고객이 던질 만한 질문을 이 고리 안에 넣는다. 레드팀이 고객의 반응을 대신 연기하고, 담당자는 그 반박에 미리 대비한다.</div></div>
+  <div class="four">
+   <div>빈틈을 드러낸다</div><div>질문과 변경 사항을 모은다</div>
+   <div>담당자를 준비시킨다</div><div>고객 상황을 미리 돌려 본다</div></div></div>
+</div>
+ <div class="foot">순환 검토 · 초안 → 비판 → 수정 → 반복 · 담당자는 준비된 채로 들어간다</div>
+</div>
+
+
+<style>
+#pdfbtn{position:fixed;right:26px;bottom:26px;z-index:9999;background:#1a3d6d;color:#fff;
+ border:none;border-radius:30px;padding:15px 26px;font-size:15px;font-weight:800;cursor:pointer;
+ font-family:'Apple SD Gothic Neo',sans-serif;box-shadow:0 5px 20px rgba(0,0,0,.28);letter-spacing:-.2px}
+#pdfbtn:hover{background:#122d52}
+#pdfhint{position:fixed;right:26px;bottom:78px;z-index:9999;background:rgba(22,35,47,.92);color:#fff;
+ border-radius:7px;padding:9px 14px;font-size:12.5px;line-height:1.5;max-width:230px;
+ font-family:'Apple SD Gothic Neo',sans-serif;display:none}
+@media print{#pdfbtn,#pdfhint{display:none!important}}
+</style>
+<div id="pdfhint">인쇄 창에서 <b>대상 → PDF로 저장</b>,<br>여백 <b>없음</b>, 배경 그래픽 <b>체크</b></div>
+<button id="pdfbtn" onclick="window.print()"
+ onmouseover="document.getElementById('pdfhint').style.display='block'"
+ onmouseout="document.getElementById('pdfhint').style.display='none'">PDF로 저장</button>
+</body></html>

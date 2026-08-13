@@ -12,10 +12,11 @@ h2{font-size:20px;font-weight:800;margin:38px 0 5px;padding-top:22px;border-top:
 h2:first-of-type{border-top:none;padding-top:0}
 .cdesc{font-size:14px;color:var(--mute);margin-bottom:16px}
 ul{list-style:none}
-li{background:#fff;border:1px solid var(--line);border-radius:6px;margin-bottom:9px;
- display:flex;align-items:center;gap:14px;padding:14px 18px;transition:.12s}
-li:hover{border-color:var(--navy);box-shadow:0 2px 10px rgba(26,61,109,.08)}
-li a{color:var(--ink);text-decoration:none;font-weight:700;font-size:16px;flex:none}
+li{margin-bottom:9px}
+a.row{background:#fff;border:1px solid var(--line);border-radius:6px;text-decoration:none;
+ display:flex;align-items:center;gap:14px;padding:16px 18px;transition:.12s;color:var(--ink)}
+a.row:hover{border-color:var(--navy);box-shadow:0 2px 10px rgba(26,61,109,.08);background:#fdfeff}
+a.row .t{font-weight:700;font-size:16px;flex:none}
 li .d{color:var(--mute);font-size:13.5px;flex:1}
 li .x{font-size:11px;color:#a9b1bc;font-family:ui-monospace,Menlo,monospace;flex:none}
 .b{font-size:11px;font-weight:700;padding:3px 9px;border-radius:11px;flex:none;letter-spacing:.2px}
@@ -37,6 +38,7 @@ footer{margin:54px 0 40px;padding-top:22px;border-top:1px solid var(--line);
 .doc p,.doc li{font-size:15px;margin-bottom:10px}
 .doc ul,.doc ol{padding-left:22px;margin-bottom:14px}
 .doc li{background:none;border:none;display:list-item;padding:0;margin-bottom:6px}
+.doc a.row{display:flex}
 .doc table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}
 .doc th{background:var(--bg);border-bottom:2px solid var(--ink);padding:9px 12px;text-align:left}
 .doc td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top}
